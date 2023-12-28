@@ -1,4 +1,4 @@
-import { ScrollView, StyleSheet, View } from "react-native";
+import { StyleSheet, View, ScrollView } from "react-native";
 import AppBarComponent from "../components/AppBar/AppBarComponent";
 import RegisterContainer from "../containers/Register/RegisterContainer";
 
@@ -7,7 +7,7 @@ const RegisterScreen = ({ navigation }) => {
     <>
       <AppBarComponent content={"Register"} />
       <View style={styles.container}>
-        <ScrollView>
+        <ScrollView keyboardShouldPersistTaps="always">
           <RegisterContainer navigation={navigation} />
         </ScrollView>
       </View>

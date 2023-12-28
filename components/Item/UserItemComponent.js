@@ -5,35 +5,23 @@ import { useSelector, useDispatch } from "react-redux";
 import { setReservation } from "../../redux/ReservationSlice";
 import { colors } from "../../constants/colors";
 
-const UserItemComponent = ({ data, detail }) => {
-  const [count, setCount] = useState(0);
-  const dispatch = useDispatch();
-  const detailitemsdata = useSelector((state) => state.itemNroom.itemsdata);
-  const activeItem = detailitemsdata.find((e) => e.nama === data.nama);
+const UserItemComponent = ({ data, addItem }) => {
+  const itemsdata = useSelector((state) => state.itemNroom.itemsdata);
+  const activeItem = itemsdata.find((e) => e.nama == data.nama);
 
-  const updateData = (nama, newValue) => {
-    const updatedItemsData = itemsdata.map((item) => {
-      if (item.nama === nama) {
-        return { ...item, jumlah: newValue };
-      }
-      return item;
-    });
-    dispatch(setReservation(updatedItemsData));
+  const [count, setCount] = useState(data.jumlah);
+
+  const handleIncrement = () => {
+    if (count < activeItem.jumlah) {
+      setCount((prevCount) => prevCount + 1);
+      addItem(data.nama, count + 1);
+    }
   };
 
   const handleDecrement = () => {
-    if (count > 0) {
+    if (activeItem.jumlah > 0) {
       setCount((prevCount) => prevCount - 1);
-      // updateData(data.nama, count - 1); // Kurangi 1 dari count saat menurunkan jumlah
-    }
-    console.log;
-  };
-
-  const handleIncrement = () => {
-    console.log(count);
-    if (count < activeItem.jumlah) {
-      setCount((prevCount) => prevCount + 1);
-      // updateData(data.nama, count + 1); // Tambah 1 ke count saat menaikkan jumlah
+      addItem(data.nama, count - 1);
     }
   };
 
@@ -42,12 +30,11 @@ const UserItemComponent = ({ data, detail }) => {
       <Pressable>
         <Text style={styles.itemName}>{data.nama}</Text>
       </Pressable>
-
       <View style={styles.countItem}>
         <Pressable onPress={handleDecrement} style={styles.countButton}>
           <Icon name="minus" size={15} color="black" />
         </Pressable>
-        <Text style={styles.itemCount}>{count}</Text>
+        <Text style={styles.itemCount}>{data.jumlah}</Text>
         <Pressable onPress={handleIncrement} style={styles.countButton}>
           <Icon name="plus" size={15} color="black" />
         </Pressable>

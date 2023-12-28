@@ -8,6 +8,17 @@ class User {
     this.question = question;
     this.answer = answer;
   }
+  toSerializableObject() {
+    return {
+      name: this.name,
+      nimNidn: this.nimNidn,
+      password: this.password,
+      email: this.email,
+      status: this.status,
+      question: this.question,
+      answer: this.answer,
+    };
+  }
 }
 
 export default User;

@@ -2,13 +2,27 @@ import { useState } from "react";
 import ItemAppBarContainer from "./ItemAppBar";
 import UserItemComponent from "../../components/Item/UserItemComponent";
 import { FlatList, StyleSheet, View } from "react-native";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import CheckBoxComponent from "../../components/CheckBox/CheckBoxComponent";
+import roomList from "../../data/local/RoomData";
+import { setReservation } from "../../redux/ReservationSlice";
 
 const UserItemContainer = () => {
   const [activeScreen, setActiveScreen] = useState("Peralatan");
   const itemsdata = useSelector((state) => state.reservation.itemsreservation);
-  const roomsdata = useSelector((state) => state.itemNroom.roomsdata);
+  const dispatch = useDispatch();
+
+  const updateData = (nama, newValue) => {
+    const updatedItemsData = itemsdata.map((item) => {
+      if (item.nama === nama) {
+        return { ...item, jumlah: newValue };
+      }
+      return item;
+    });
+
+    console.log(updatedItemsData);
+    dispatch(setReservation({ itemsreservation: updatedItemsData }));
+  };
 
   return (
     <>
@@ -20,12 +34,14 @@ const UserItemContainer = () => {
         {activeScreen == "Peralatan" ? (
           <FlatList
             data={itemsdata}
-            renderItem={({ item }) => <UserItemComponent data={item} />}
-            keyExtractor={(item) => item.id}
+            renderItem={({ item }) => (
+              <UserItemComponent data={item} addItem={updateData} />
+            )}
+            keyExtractor={(item) => item.nama}
           />
         ) : (
           <FlatList
-            data={roomsdata}
+            data={roomList}
             renderItem={({ item }) => <CheckBoxComponent data={item} />}
             keyExtractor={(item) => item.id}
           />

@@ -1,6 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
 import itemList from "../data/local/ItemData";
-import ReservationItem from "../domain/models/ReservationItem";
 
 const initialState = {
   itemsreservation: itemList.map((e) => ({ nama: e.nama, jumlah: 0 })),
@@ -11,9 +10,9 @@ export const ReservationSlice = createSlice({
   name: "itemNroom",
   initialState: initialState,
   reducers: {
-    setItemNRoom: (state, action) => {
-      state.itemsdata = action.payload.itemsreservation;
-      state.roomsdata = action.payload.roomsreservation;
+    setReservation: (state, action) => {
+      state.itemsreservation = action.payload.itemsreservation;
+      state.roomsreservation = action.payload.roomsreservation;
     },
   },
 });
@@ -21,3 +20,4 @@ export const ReservationSlice = createSlice({
 export const { setReservation } = ReservationSlice.actions;
 
 export default ReservationSlice.reducer;
+  

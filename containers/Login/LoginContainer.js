@@ -2,8 +2,7 @@ import { useEffect, useState } from "react";
 import ButtonComponent from "../../components/Button/ButtonComponent";
 import TextInputComponent from "../../components/TextInput/TextInputComponent";
 import { colors } from "../../constants/colors";
-import usersdata from "../../data/local/UserData";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setLogin } from "../../redux/LoginSlice";
 import WarningText from "../../components/WarningText/WarningTextComponent";
 import TextButtonComponent from "../../components/Button/TextButtonComponent";
@@ -14,14 +13,18 @@ const LoginContainer = ({ navigation }) => {
   const [warning, setWarning] = useState(false);
   const dispatch = useDispatch();
 
+  const userData = useSelector((state) => state.register.datauser);
+
   const loginHandling = () => {
-    const userdata = usersdata.find(
+    console.log(userData);
+    const userdata = userData.find(
       (e) => e.nimNidn === nimNidn && e.password === password
     );
 
     if (userdata) {
       const { name, nimNidn, status } = userdata;
-      dispatch(setLogin({ name, nimNidn, status }));
+
+      dispatch(setLogin({ name: name, nimNidn: nimNidn, status: status }));
       navigation.navigate("MainMenu");
     } else {
       setWarning(true);

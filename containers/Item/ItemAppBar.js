@@ -22,16 +22,7 @@ const ItemAppBarContainer = ({ content, shownScreen }) => {
           }}
         >
           <Text style={styles.headerText}>{content}</Text>
-          <TouchableOpacity
-            style={styles.checkout}
-            onPress={() =>
-              navigation.navigate("peminjaman", {
-                data: keranjang,
-                timeline: [dateAwal, dateAkhir],
-                dataRuangan: keranjangRuangan,
-              })
-            }
-          >
+          <TouchableOpacity style={styles.checkout}>
             <Icon name="shopping-cart" size={30} color="#333" />
           </TouchableOpacity>
         </View>

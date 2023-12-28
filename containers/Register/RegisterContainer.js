@@ -2,10 +2,12 @@ import { useState } from "react";
 import ButtonComponent from "../../components/Button/ButtonComponent";
 import TextInputComponent from "../../components/TextInput/TextInputComponent";
 import { colors } from "../../constants/colors";
-import { useSelector } from "react-redux";
 import User from "../../domain/models/User";
-import DropDownPickerComponent from "../../components/Dropdown/DropDown";
 import WarningText from "../../components/WarningText/WarningTextComponent";
+import { useDispatch, useSelector } from "react-redux";
+import { setRegister } from "../../redux/RegisterSlice";
+import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import Icon from "react-native-vector-icons/FontAwesome";
 
 const RegisterContainer = ({ navigation }) => {
   const [nama, setNama] = useState("");
@@ -15,16 +17,23 @@ const RegisterContainer = ({ navigation }) => {
   const [pertanyaanRahasia, setPertanyaanRahasia] = useState("");
   const [jawabanRahasia, setJawabanRahasia] = useState("");
   const [status, setStatus] = useState("");
+  const dispatch = useDispatch();
+  const userData = useSelector((state) => state.register.datauser);
+  const [isMahasiswa, setMahasiswa] = useState(false);
+  const [isDosen, setDosen] = useState(false);
 
-  const data = [
-    { label: "Mahasiswa", value: "mahasiswa" },
-    { label: "Dosen", value: "dosen" },
-    { label: "Staff", value: "staff" },
-  ];
+  const handleMahasiswaChange = (value) => {
+    setMahasiswa(value);
+    setDosen(!value);
+  };
+
+  const handleDosenChange = (value) => {
+    setDosen(value);
+    setMahasiswa(!value);
+  };
 
   const RegisterHandle = () => {
-    const userdata = useSelector((state) => state.datauser);
-
+    console.log(userData);
     if (
       !nama ||
       !nimNidn ||
@@ -38,7 +47,7 @@ const RegisterContainer = ({ navigation }) => {
     }
 
     // Cek apakah username sudah digunakan
-    if (userdata.some((user) => user.username === nimNidn)) {
+    if (userData.some((user) => user.nimNidn === nimNidn)) {
       console.log("NIM/NIDN sudah digunakan, pilih yang lain");
       return;
     }
@@ -48,9 +57,16 @@ const RegisterContainer = ({ navigation }) => {
       nimNidn,
       password,
       emailInstitusi,
+      isMahasiswa ? "Mahasiswa" : "Dosen",
       pertanyaanRahasia,
       jawabanRahasia
     );
+
+    dispatch(
+      setRegister({ datauser: [...userData, NewUser.toSerializableObject()] })
+    );
+
+    navigation.navigate("Login");
   };
 
   return (
@@ -76,11 +92,18 @@ const RegisterContainer = ({ navigation }) => {
         placeholder={"Masukkan E-Mail Institusi..."}
         setValue={setEmailInstitusi}
       />
-      <DropDownPickerComponent
-        data={data}
-        selectValue={setStatus}
-        placeholderText={"Pilih Status Anda..."}
-      />
+      <View style={{ flexDirection: "row", marginStart: 10, marginTop: 5 }}>
+        <Checkbox
+          label="Mahasiswa"
+          isChecked={isMahasiswa}
+          onChange={handleMahasiswaChange}
+        />
+        <Checkbox
+          label="Dosen"
+          isChecked={isDosen}
+          onChange={handleDosenChange}
+        />
+      </View>
       <TextInputComponent
         textinputname={"Pertanyaan Rahasia"}
         placeholder={"Masukkan Pertanyaan Rahasia...."}
@@ -94,6 +117,7 @@ const RegisterContainer = ({ navigation }) => {
       <ButtonComponent
         buttontext={"Daftar"}
         buttonstyle={{ backgroundColor: colors.buttonLogin }}
+        onPress={RegisterHandle}
       />
       <ButtonComponent
         buttontext={"Batal"}
@@ -103,5 +127,36 @@ const RegisterContainer = ({ navigation }) => {
     </>
   );
 };
+
+const Checkbox = ({ label, onChange, isChecked }) => {
+  const toggleCheckbox = () => {
+    onChange(!isChecked);
+  };
+
+  return (
+    <TouchableOpacity onPress={toggleCheckbox} style={styles.container}>
+      <View style={styles.checkbox}>
+        {isChecked ? (
+          <Icon name="check-square" size={20} color="green" />
+        ) : (
+          <Icon name="square" size={20} color={colors.buttonLogin} />
+        )}
+      </View>
+      <Text>{label}</Text>
+    </TouchableOpacity>
+  );
+};
+
+const styles = StyleSheet.create({
+  container: {
+    flexDirection: "row",
+    alignItems: "center",
+    marginBottom: 10,
+    marginEnd: 20,
+  },
+  checkbox: {
+    marginRight: 10,
+  },
+});
 
 export default RegisterContainer;

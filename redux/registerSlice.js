@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import usersdata from "../data/local/UserData";
 
 const initialState = {
-  datauser: usersdata,
+  datauser: usersdata.map((e) => e.toSerializableObject()),
 };
 
 export const registerSlice = createSlice({

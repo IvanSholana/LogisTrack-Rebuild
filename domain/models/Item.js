@@ -6,6 +6,16 @@ class Item {
     this.deskripsi = deskripsi;
     this.gambar = gambar;
   }
+
+  toSerializableObject() {
+    return {
+      id: this.id,
+      nama: this.nama,
+      jumlah: this.jumlah,
+      deskripsi: this.deskripsi,
+      gambar: this.gambar,
+    };
+  }
 }
 
 export default Item;

@@ -3,8 +3,8 @@ import itemList from "../data/local/ItemData";
 import roomList from "../data/local/RoomData";
 
 const initialState = {
-  itemsdata: itemList,
-  roomsdata: roomList,
+  itemsdata: itemList.map((e) => e.toSerializableObject()),
+  roomsdata: roomList.map((e) => e.toSerializableObject()),
 };
 
 export const ItemRoomSlice = createSlice({
