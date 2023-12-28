@@ -5,6 +5,7 @@ import { colors } from "../../constants/colors";
 import { useSelector } from "react-redux";
 import User from "../../domain/models/User";
 import DropDownPickerComponent from "../../components/Dropdown/DropDown";
+import WarningText from "../../components/WarningText/WarningTextComponent";
 
 const RegisterContainer = ({ navigation }) => {
   const [nama, setNama] = useState("");
@@ -87,7 +88,7 @@ const RegisterContainer = ({ navigation }) => {
       />
       <TextInputComponent
         textinputname={"Jawaban Rahasia"}
-        placeholder={"Masukkan Jawaban Rahasia"}
+        placeholder={"Masukkan Jawaban Rahasia..."}
         setValue={setJawabanRahasia}
       />
       <ButtonComponent

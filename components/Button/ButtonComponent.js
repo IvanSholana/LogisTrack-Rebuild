@@ -17,9 +17,10 @@ const styles = StyleSheet.create({
     fontSize: 15,
   },
   button: {
-    margin: 10,
+    marginHorizontal: 10,
     padding: 15,
     borderRadius: 10,
+    marginVertical: 5,
   },
 });
 

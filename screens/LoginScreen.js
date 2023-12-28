@@ -30,15 +30,14 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: "center",
-
-    paddingTop: 40,
+    paddingTop: 35,
   },
   cover: {
     flex: 1,
     alignItems: "center",
   },
   logo: {
-    marginRight: 10, // Jarak antara logo dan gambar cuate
+    marginRight: 10,
     marginBottom: 10,
   },
   cuateImage: {
