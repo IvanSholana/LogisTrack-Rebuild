@@ -1,5 +1,9 @@
 const AdminItemContainer = () => {
-  return <></>;
+  return (
+    <>
+      <ItemAppBarContainer content={"Atur Inventaris"} />
+    </>
+  );
 };
 
 export default AdminItemContainer;

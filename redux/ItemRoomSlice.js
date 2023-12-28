@@ -12,13 +12,12 @@ export const ItemRoomSlice = createSlice({
   initialState: initialState,
   reducers: {
     setItemNRoom: (state, action) => {
-      state.name = action.payload.name;
       state.itemsdata = action.payload.itemsdata;
       state.roomsdata = action.payload.roomsdata;
     },
   },
 });
 
-export const { setRoom } = ItemRoomSlice.actions;
+export const { setItemRoom } = ItemRoomSlice.actions;
 
 export default ItemRoomSlice.reducer;
