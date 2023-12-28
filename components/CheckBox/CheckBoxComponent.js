@@ -2,13 +2,13 @@ import { Pressable, View, Text, StyleSheet } from "react-native";
 import BouncyCheckbox from "react-native-bouncy-checkbox";
 import { colors } from "../../constants/colors";
 
-const CheckBoxComponent = ({ data, navigation }) => {
+const CheckBoxComponent = ({ data, setValue, isChecked }) => {
+  console.log(isChecked);
+
   return (
     <>
       <View style={styles.contaier}>
-        <Pressable
-          onPress={() => navigation.navigate("detailruangan", { detail: data })}
-        >
+        <Pressable>
           <Text style={styles.title}>{data.nama}</Text>
         </Pressable>
         <BouncyCheckbox
@@ -17,6 +17,10 @@ const CheckBoxComponent = ({ data, navigation }) => {
           unfillColor="#FFFFFF"
           iconStyle={{ borderColor: colors.buttonLogin }}
           innerIconStyle={{ borderWidth: 2 }}
+          onPress={(isChecked) => {
+            setValue(data.nama, isChecked);
+          }}
+          isChecked={isChecked}
         />
       </View>
     </>

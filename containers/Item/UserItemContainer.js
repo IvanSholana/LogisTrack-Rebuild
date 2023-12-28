@@ -9,7 +9,12 @@ import { setReservation } from "../../redux/ReservationSlice";
 
 const UserItemContainer = () => {
   const [activeScreen, setActiveScreen] = useState("Peralatan");
-  const itemsdata = useSelector((state) => state.reservation.itemsreservation);
+  const { itemsreservation: itemsdata, roomsreservation: itemsroom } =
+    useSelector((state) => state.reservation);
+
+  console.log(itemsroom);
+  console.log(itemsdata);
+
   const dispatch = useDispatch();
 
   const updateData = (nama, newValue) => {
@@ -20,8 +25,29 @@ const UserItemContainer = () => {
       return item;
     });
 
-    console.log(updatedItemsData);
-    dispatch(setReservation({ itemsreservation: updatedItemsData }));
+    dispatch(
+      setReservation({
+        itemsreservation: updatedItemsData,
+        roomsreservation: itemsroom,
+      })
+    );
+  };
+
+  const addRoom = (selectedRoom, isSelected) => {
+    let updatedRooms = [...itemsroom];
+
+    if (isSelected && !updatedRooms.includes(selectedRoom)) {
+      updatedRooms.push(selectedRoom);
+    } else {
+      updatedRooms = updatedRooms.filter((room) => room !== selectedRoom);
+    }
+
+    dispatch(
+      setReservation({
+        itemsreservation: itemsdata,
+        roomsreservation: updatedRooms,
+      })
+    );
   };
 
   return (
@@ -42,7 +68,13 @@ const UserItemContainer = () => {
         ) : (
           <FlatList
             data={roomList}
-            renderItem={({ item }) => <CheckBoxComponent data={item} />}
+            renderItem={({ item }) => (
+              <CheckBoxComponent
+                data={item}
+                setValue={addRoom}
+                isChecked={itemsroom.includes(item.nama)}
+              />
+            )}
             keyExtractor={(item) => item.id}
           />
         )}
