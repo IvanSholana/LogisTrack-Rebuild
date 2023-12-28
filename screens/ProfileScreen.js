@@ -4,11 +4,11 @@ import {
   UserProfileContainer,
 } from "../containers/Profile/UserProfileContainer";
 
-const ProfileScreen = () => {
+const ProfileScreen = ({ navigation }) => {
   return (
     <>
       <View>
-        <UserProfileAppBar />
+        <UserProfileAppBar navigation={navigation} />
         <View style={styles.content}>
           <UserProfileContainer />
         </View>

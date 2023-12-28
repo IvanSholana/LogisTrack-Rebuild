@@ -2,13 +2,13 @@ import { useSelector } from "react-redux";
 import AdminItemContainer from "../containers/Item/AdminItemContainer";
 import UserItemContainer from "../containers/Item/UserItemContainer";
 
-const ItemScreen = () => {
+const ItemScreen = ({ navigation }) => {
   const status = useSelector((state) => state.login.status);
 
   return (
     <>
       {status === "Dosen" || status === "Mahasiswa" ? (
-        <UserItemContainer />
+        <UserItemContainer navigation={navigation} />
       ) : (
         <AdminItemContainer />
       )}

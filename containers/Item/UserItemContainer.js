@@ -7,7 +7,7 @@ import CheckBoxComponent from "../../components/CheckBox/CheckBoxComponent";
 import roomList from "../../data/local/RoomData";
 import { setReservation } from "../../redux/ReservationSlice";
 
-const UserItemContainer = () => {
+const UserItemContainer = ({ navigation }) => {
   const [activeScreen, setActiveScreen] = useState("Peralatan");
   const { itemsreservation: itemsdata, roomsreservation: itemsroom } =
     useSelector((state) => state.reservation);
@@ -52,6 +52,7 @@ const UserItemContainer = () => {
       <ItemAppBarContainer
         content={"Inventory"}
         shownScreen={setActiveScreen}
+        navigation={navigation}
       />
       <View style={styles.itemSection}>
         {activeScreen == "Peralatan" ? (

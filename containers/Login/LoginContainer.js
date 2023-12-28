@@ -22,8 +22,9 @@ const LoginContainer = ({ navigation }) => {
 
     if (userdata) {
       const { name, nimNidn, status } = userdata;
-
       dispatch(setLogin({ name: name, nimNidn: nimNidn, status: status }));
+      setnimNidn("");
+      setPassword("");
       navigation.navigate("MainMenu");
     } else {
       setWarning(true);
@@ -41,6 +42,7 @@ const LoginContainer = ({ navigation }) => {
         textinputname={"NIM/NIDN"}
         placeholder={"Masukkan NIM/NIDN..."}
         setValue={setnimNidn}
+        fillValue={nimNidn}
       />
       {warning ? (
         <WarningText content={"NIM/NIDN atau Password Salah..."} />
@@ -50,6 +52,7 @@ const LoginContainer = ({ navigation }) => {
         placeholder={"Masukkan Password..."}
         security={true}
         setValue={setPassword}
+        fillValue={password}
       />
       {warning ? (
         <WarningText content={"NIM/NIDN atau Password Salah..."} />

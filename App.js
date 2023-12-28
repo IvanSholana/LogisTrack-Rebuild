@@ -12,6 +12,7 @@ import HistoryEventScreen from "./screens/HistoryEventScreen";
 import ProfileScreen from "./screens/ProfileScreen";
 import { colors } from "./constants/colors";
 import store from "./redux/Store";
+import CheckoutScreen from "./screens/CheckOutScreen";
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -85,6 +86,11 @@ export default function App() {
           <Stack.Screen
             name="MainMenu"
             component={TabsScreen}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="Checkout"
+            component={CheckoutScreen}
             options={{ headerShown: false }}
           />
         </Stack.Navigator>

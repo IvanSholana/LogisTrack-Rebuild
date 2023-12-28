@@ -5,8 +5,6 @@ import { FlatList } from "react-native";
 const HistoryEventContainer = () => {
   const eventData = useSelector((state) => state.event.event);
 
-  console.log(eventData);
-
   return (
     <>
       <FlatList
