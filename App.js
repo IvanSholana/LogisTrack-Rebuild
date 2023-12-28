@@ -6,12 +6,12 @@ import { createStackNavigator } from "@react-navigation/stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import LoginScreen from "./screens/LoginScreen";
 import { Provider } from "react-redux";
-import store from "./redux/Store";
 import RegisterScreen from "./screens/RegisterScreen";
 import ItemScreen from "./screens/ItemScreen";
 import HistoryEventScreen from "./screens/HistoryEventScreen";
 import ProfileScreen from "./screens/ProfileScreen";
 import { colors } from "./constants/colors";
+import store from "./redux/Store";
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();

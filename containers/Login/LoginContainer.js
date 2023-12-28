@@ -16,7 +16,6 @@ const LoginContainer = ({ navigation }) => {
   const userData = useSelector((state) => state.register.datauser);
 
   const loginHandling = () => {
-    console.log(userData);
     const userdata = userData.find(
       (e) => e.nimNidn === nimNidn && e.password === password
     );

@@ -12,9 +12,6 @@ const UserItemContainer = () => {
   const { itemsreservation: itemsdata, roomsreservation: itemsroom } =
     useSelector((state) => state.reservation);
 
-  console.log(itemsroom);
-  console.log(itemsdata);
-
   const dispatch = useDispatch();
 
   const updateData = (nama, newValue) => {
@@ -53,7 +50,7 @@ const UserItemContainer = () => {
   return (
     <>
       <ItemAppBarContainer
-        content={"Peminjaman"}
+        content={"Inventory"}
         shownScreen={setActiveScreen}
       />
       <View style={styles.itemSection}>

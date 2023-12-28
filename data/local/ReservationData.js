@@ -7,7 +7,10 @@ const peminjamanList = [
     "001",
     "John Doe",
     "Seminar Teknologi",
-    [new ReservationItem("001", 5), new ReservationItem("002", 2)],
+    [
+      { nama: "Laptop", jumlah: 1 },
+      { nama: "Proyektor", jumlah: 1 },
+    ],
     ["1", "2"],
     "2023-01-01",
     "00:00",
@@ -19,7 +22,10 @@ const peminjamanList = [
     "002",
     "Jane Smith",
     "Workshop Seni",
-    [new ReservationItem("003", 10), new ReservationItem("004", 1)],
+    [
+      { nama: "Laptop", jumlah: 1 },
+      { nama: "Proyektor", jumlah: 1 },
+    ],
     ["3"],
     "2023-02-01",
     "00:00",
@@ -31,7 +37,10 @@ const peminjamanList = [
     "003",
     "Bob Johnson",
     "Rapat Koordinasi",
-    [new ReservationItem("005", 3), new ReservationItem("006", 1)],
+    [
+      { nama: "Laptop", jumlah: 1 },
+      { nama: "Proyektor", jumlah: 1 },
+    ],
     ["4"],
     "2023-03-01",
     "00:00",
@@ -45,7 +54,10 @@ const peminjamanList = [
     "004",
     "Alice Brown",
     "Acara Musik",
-    [new ReservationItem("007", 8), new ReservationItem("008", 2)],
+    [
+      { nama: "Laptop", jumlah: 1 },
+      { nama: "Proyektor", jumlah: 1 },
+    ],
     ["5"],
     "2023-04-01",
     "00:00",
@@ -57,7 +69,10 @@ const peminjamanList = [
     "005",
     "Alice Brown",
     "Diskusi Komunitas",
-    [new ReservationItem("009", 15), new ReservationItem("010", 5)],
+    [
+      { nama: "Laptop", jumlah: 1 },
+      { nama: "Proyektor", jumlah: 1 },
+    ],
     ["6"],
     "2023-05-01",
     "00:00",
@@ -69,7 +84,10 @@ const peminjamanList = [
     "006",
     "DJane Smith",
     "Pertandingan Olahraga",
-    [new ReservationItem("011", 2), new ReservationItem("012", 10)],
+    [
+      { nama: "Laptop", jumlah: 1 },
+      { nama: "Proyektor", jumlah: 1 },
+    ],
     ["7"],
     "2023-06-01",
     "00:00",
@@ -81,7 +99,10 @@ const peminjamanList = [
     "007",
     "Alice Brown",
     "Sosialisasi Kesehatan",
-    [new ReservationItem("001", 50), new ReservationItem("002", 1)],
+    [
+      { nama: "Laptop", jumlah: 1 },
+      { nama: "Microphone", jumlah: 1 },
+    ],
     ["8"],
     "2023-07-01",
     "00:00",
@@ -93,7 +114,10 @@ const peminjamanList = [
     "008",
     "Alice Brown",
     "Ujian Online",
-    [new ReservationItem("006", 30), new ReservationItem("002", 3)],
+    [
+      { nama: "Whiteboard", jumlah: 1 },
+      { nama: "Microphone", jumlah: 1 },
+    ],
     ["9"],
     "2023-08-01",
     "00:00",
@@ -105,7 +129,10 @@ const peminjamanList = [
     "009",
     "John Doe",
     "Seminar Keuangan",
-    [new ReservationItem("005", 1), new ReservationItem("002", 5)],
+    [
+      { nama: "Komputer", jumlah: 1 },
+      { nama: "Whiteboard", jumlah: 2 },
+    ],
     ["1"],
     "2023-09-01",
     "00:00",
@@ -117,7 +144,10 @@ const peminjamanList = [
     "010",
     "John Doe",
     "Pertunjukan Teater",
-    [new ReservationItem("003", 1), new ReservationItem("004", 15)],
+    [
+      { nama: "Microphone", jumlah: 1 },
+      { nama: "Tables", jumlah: 1 },
+    ],
     ["9"],
     "2023-10-01",
     "00:00",
@@ -126,3 +156,5 @@ const peminjamanList = [
     "Selesai"
   ),
 ];
+
+export default peminjamanList;

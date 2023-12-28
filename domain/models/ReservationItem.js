@@ -3,6 +3,13 @@ class ReservationItem {
     this.nama = nama;
     this.jumlah = jumlah;
   }
+
+  toSerializableObject() {
+    return {
+      nama: this.nama,
+      jumlah: this.jumlah,
+    };
+  }
 }
 
 export default ReservationItem;

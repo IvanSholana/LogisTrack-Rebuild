@@ -3,8 +3,6 @@ import BouncyCheckbox from "react-native-bouncy-checkbox";
 import { colors } from "../../constants/colors";
 
 const CheckBoxComponent = ({ data, setValue, isChecked }) => {
-  console.log(isChecked);
-
   return (
     <>
       <View style={styles.contaier}>

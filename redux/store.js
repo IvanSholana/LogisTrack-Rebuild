@@ -3,6 +3,7 @@ import LoginReducer from "./LoginSlice";
 import RegisterReducer from "./RegisterSlice";
 import ItemRoomReducer from "./ItemRoomSlice";
 import ReservationReducer from "./ReservationSlice";
+import EventReducer from "./EventSlice";
 
 const store = configureStore({
   reducer: {
@@ -10,6 +11,7 @@ const store = configureStore({
     register: RegisterReducer,
     itemNroom: ItemRoomReducer,
     reservation: ReservationReducer,
+    event: EventReducer,
   },
 });
 
