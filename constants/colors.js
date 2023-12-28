@@ -5,7 +5,7 @@ export const colors = {
   eventCompleted: "#A7C957",
   tabActive: "#6A994E",
   buttonLogin: "#A7C957",
-  buttonRegister: "#D9D9D9",
+  buttonRegister: "#b2b2b2",
   loginText: "white",
   registerText: "#737373",
 };

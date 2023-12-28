@@ -3,6 +3,7 @@ import { FlatList } from "react-native-gesture-handler";
 import { colors } from "../../constants/colors";
 
 const TableComponent = ({ data }) => {
+  const datainventory = [...data];
   return (
     <>
       <View style={styles.table}>
@@ -11,15 +12,21 @@ const TableComponent = ({ data }) => {
           <Text style={styles.head}>Jumlah</Text>
         </View>
         <View>
-          <FlatList
-            data={data}
-            renderItem={({ item }) => (
-              <View style={styles.content}>
-                <Text style={styles.textContent}>{item.nama}</Text>
-                <Text style={styles.textContent}>{item.jumlah}</Text>
-              </View>
-            )}
-          />
+          {datainventory.length > 0 ? (
+            <FlatList
+              data={data}
+              renderItem={({ item }) => (
+                <View style={styles.content}>
+                  <Text style={styles.textContent}>{item.nama}</Text>
+                  <Text style={styles.textContent}>{item.jumlah}</Text>
+                </View>
+              )}
+            />
+          ) : (
+            <View style={styles.content}>
+              <Text style={styles.textContent}>KOSONG</Text>
+            </View>
+          )}
         </View>
       </View>
     </>

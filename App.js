@@ -12,7 +12,7 @@ import HistoryEventScreen from "./screens/HistoryEventScreen";
 import ProfileScreen from "./screens/ProfileScreen";
 import { colors } from "./constants/colors";
 import store from "./redux/Store";
-import CheckoutScreen from "./screens/CheckOutScreen";
+import CheckoutScreen from "./screens/CheckoutScreen";
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();

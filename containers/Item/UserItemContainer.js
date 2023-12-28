@@ -6,13 +6,14 @@ import { useDispatch, useSelector } from "react-redux";
 import CheckBoxComponent from "../../components/CheckBox/CheckBoxComponent";
 import roomList from "../../data/local/RoomData";
 import { setReservation } from "../../redux/ReservationSlice";
+import FloatingButtonComponent from "../../components/FloatingButton/FloatingButtonComponent";
 
 const UserItemContainer = ({ navigation }) => {
   const [activeScreen, setActiveScreen] = useState("Peralatan");
   const { itemsreservation: itemsdata, roomsreservation: itemsroom } =
     useSelector((state) => state.reservation);
-
   const dispatch = useDispatch();
+  const [calendar, setCalendar] = useState();
 
   const updateData = (nama, newValue) => {
     const updatedItemsData = itemsdata.map((item) => {
@@ -77,12 +78,20 @@ const UserItemContainer = ({ navigation }) => {
           />
         )}
       </View>
+      <View style={styles.calendar}>
+        <FloatingButtonComponent icon={"calendar"} onpress={setCalendar} />
+      </View>
     </>
   );
 };
 
 const styles = StyleSheet.create({
   itemSection: { flex: 1 },
+  calendar: {
+    position: "absolute",
+    bottom: 16, // Sesuaikan dengan jarak dari bawah
+    right: 16, // Sesuaikan dengan jarak dari kanan
+  },
 });
 
 export default UserItemContainer;
