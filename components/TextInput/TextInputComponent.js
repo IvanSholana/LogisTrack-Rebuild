@@ -9,6 +9,7 @@ const TextInputComponent = ({
   isEdit,
   fillValue,
   setValue,
+  keyboardType,
 }) => {
   return (
     <View style={styles.container}>
@@ -21,6 +22,7 @@ const TextInputComponent = ({
         placeholderTextColor={colors.registerText}
         secureTextEntry={security}
         onChangeText={(text) => setValue(text)}
+        keyboardType={keyboardType}
       />
     </View>
   );
