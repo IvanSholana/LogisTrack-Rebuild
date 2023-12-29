@@ -4,9 +4,11 @@ import TextButtonComponent from "../../components/Button/TextButtonComponent";
 import { useEffect, useState } from "react";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import Icon from "react-native-vector-icons/FontAwesome";
+import { useSelector } from "react-redux";
 
 const ItemAppBarContainer = ({ content, shownScreen, navigation, data }) => {
   const [activeScreen, setActiveSceen] = useState(true);
+  const status = useSelector((state) => state.login.status);
 
   useEffect(() => {
     shownScreen(activeScreen ? "Peralatan" : "Ruangan");
@@ -22,12 +24,16 @@ const ItemAppBarContainer = ({ content, shownScreen, navigation, data }) => {
           }}
         >
           <Text style={styles.headerText}>{content}</Text>
-          <TouchableOpacity
-            style={styles.checkout}
-            onPress={() => navigation.navigate("Checkout", { eventDate: data })}
-          >
-            <Icon name="shopping-cart" size={30} color="#333" />
-          </TouchableOpacity>
+          {status !== "Admin" ? (
+            <TouchableOpacity
+              style={styles.checkout}
+              onPress={() =>
+                navigation.navigate("Checkout", { eventDate: data })
+              }
+            >
+              <Icon name="shopping-cart" size={30} color="#333" />
+            </TouchableOpacity>
+          ) : null}
         </View>
         <View style={styles.navigation}>
           <TextButtonComponent

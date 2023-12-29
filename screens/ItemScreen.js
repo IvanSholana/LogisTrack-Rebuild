@@ -10,7 +10,7 @@ const ItemScreen = ({ navigation, route }) => {
       {status === "Dosen" || status === "Mahasiswa" ? (
         <UserItemContainer navigation={navigation} route={route} />
       ) : (
-        <AdminItemContainer />
+        <AdminItemContainer navigation={navigation} route={route} />
       )}
     </>
   );

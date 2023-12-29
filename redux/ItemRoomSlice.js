@@ -11,7 +11,7 @@ export const ItemRoomSlice = createSlice({
   name: "itemNroom",
   initialState: initialState,
   reducers: {
-    setItemNRoom: (state, action) => {
+    setItemRoom: (state, action) => {
       state.itemsdata = action.payload.itemsdata;
       state.roomsdata = action.payload.roomsdata;
     },

@@ -17,6 +17,7 @@ import { GluestackUIProvider, Text } from "@gluestack-ui/themed";
 import { config } from "@gluestack-ui/config";
 import DetailRoomScreen from "./screens/DetailRoomScreen";
 import EventDetailScreen from "./screens/EventDetailScreen";
+import AdminEditScreen from "./screens/AdminEditScreen";
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -111,6 +112,11 @@ export default function App() {
             <Stack.Screen
               name="DetailEvent"
               component={EventDetailScreen}
+              options={{ headerShown: false }}
+            />
+            <Stack.Screen
+              name="AdminEdit"
+              component={AdminEditScreen}
               options={{ headerShown: false }}
             />
           </Stack.Navigator>

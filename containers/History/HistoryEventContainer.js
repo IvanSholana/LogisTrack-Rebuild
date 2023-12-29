@@ -5,11 +5,16 @@ import { FlatList } from "react-native";
 const HistoryEventContainer = ({ navigation }) => {
   const eventData = useSelector((state) => state.event.event);
   const userdata = useSelector((state) => state.login.name);
+  const status = useSelector((state) => state.login.status);
 
   return (
     <>
       <FlatList
-        data={eventData.filter((e) => e.namaPeminjam == userdata)}
+        data={
+          status !== "Admin"
+            ? eventData.filter((e) => e.namaPeminjam == userdata)
+            : eventData.filter((e) => e.status == "Diajukan")
+        }
         renderItem={({ item }) => (
           <EventCardComponent
             eventDate={item.tanggalAwal}
