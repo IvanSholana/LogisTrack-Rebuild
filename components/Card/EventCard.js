@@ -2,7 +2,7 @@ import React from "react";
 import { View, TouchableOpacity, Text, StyleSheet } from "react-native";
 import { colors } from "../../constants/colors";
 
-const EventCardComponent = ({ eventName, eventDate, status }) => {
+const EventCardComponent = ({ eventName, eventDate, status, onPress }) => {
   const eventStatusColor =
     status == "Diajukan"
       ? colors.eventInProgress
@@ -12,7 +12,7 @@ const EventCardComponent = ({ eventName, eventDate, status }) => {
       ? colors.eventRejected
       : colors.eventCompleted;
   return (
-    <TouchableOpacity>
+    <TouchableOpacity onPress={onPress}>
       <View style={[styles.container, { borderColor: eventStatusColor }]}>
         <View style={styles.textcontainer}>
           <Text style={styles.title}>{eventName}</Text>

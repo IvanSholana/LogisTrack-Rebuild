@@ -16,6 +16,8 @@ const UserItemContainer = ({ navigation, route }) => {
   const { itemsreservation: itemsdata, roomsreservation: itemsroom } =
     useSelector((state) => state.reservation);
   const allitem = useSelector((state) => state.itemNroom.itemsdata);
+  const allroom = useSelector((state) => state.itemNroom.roomsdata);
+
   const currentDate = new Date();
   const formattedDate = currentDate
     .toISOString()
@@ -103,6 +105,11 @@ const UserItemContainer = ({ navigation, route }) => {
                 data={item}
                 setValue={addRoom}
                 isChecked={itemsroom.includes(item.nama)}
+                onPress={() =>
+                  navigation.navigate("DetailRoom", {
+                    data: allroom.find((e) => e.nama == item.nama),
+                  })
+                }
               />
             )}
             keyExtractor={(item) => item.id}
@@ -141,9 +148,10 @@ const UserItemContainer = ({ navigation, route }) => {
 const styles = StyleSheet.create({
   itemSection: { flex: 1 },
   calendar: {
-    marginVertical: 10,
+    marginTop: 10,
     alignItems: "flex-end",
     paddingHorizontal: 20,
+    marginBottom: 20,
   },
 });
 

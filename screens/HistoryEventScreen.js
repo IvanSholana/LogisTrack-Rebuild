@@ -2,12 +2,12 @@ import { StyleSheet, View } from "react-native";
 import AppBarComponent from "../components/AppBar/AppBarComponent";
 import HistoryEventContainer from "../containers/History/HistoryEventContainer";
 
-const HistoryEventScreen = () => {
+const HistoryEventScreen = ({ navigation }) => {
   return (
     <>
       <AppBarComponent content={"Reservation"} />
       <View style={styles.container}>
-        <HistoryEventContainer />
+        <HistoryEventContainer navigation={navigation} />
       </View>
     </>
   );

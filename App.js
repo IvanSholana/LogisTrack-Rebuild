@@ -1,4 +1,3 @@
-import { StatusBar } from "expo-status-bar";
 import { Image, StyleSheet } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import "react-native-gesture-handler";
@@ -16,6 +15,8 @@ import CheckoutScreen from "./screens/CheckoutScreen";
 import DetailItemScreen from "./screens/DetailItemScreen";
 import { GluestackUIProvider, Text } from "@gluestack-ui/themed";
 import { config } from "@gluestack-ui/config";
+import DetailRoomScreen from "./screens/DetailRoomScreen";
+import EventDetailScreen from "./screens/EventDetailScreen";
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -100,6 +101,16 @@ export default function App() {
             <Stack.Screen
               name="DetailItem"
               component={DetailItemScreen}
+              options={{ headerShown: false }}
+            />
+            <Stack.Screen
+              name="DetailRoom"
+              component={DetailRoomScreen}
+              options={{ headerShown: false }}
+            />
+            <Stack.Screen
+              name="DetailEvent"
+              component={EventDetailScreen}
               options={{ headerShown: false }}
             />
           </Stack.Navigator>

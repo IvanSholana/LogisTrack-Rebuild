@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { StyleSheet, Text, View } from "react-native";
 import { Image } from "@gluestack-ui/themed";
-import itemList from "../../data/local/ItemData";
 import { colors } from "../../constants/colors";
 import ButtonComponent from "../../components/Button/ButtonComponent";
 
 const DetailItemContainer = ({ route, navigation }) => {
   const { data } = route.params;
-  console.log(data);
+
   return (
     <View style={styles.container}>
       <View style={styles.image}>
@@ -51,7 +50,6 @@ const styles = StyleSheet.create({
   label: {
     fontWeight: "bold",
     fontSize: 25,
-    fontStyle: "italic",
     color: colors.buttonLogin,
   },
   content: {
@@ -60,11 +58,12 @@ const styles = StyleSheet.create({
   },
   textContent: {
     fontSize: 16,
+    marginTop: 2,
   },
   buttonContainer: {
     flex: 1,
     justifyContent: "flex-end",
-    marginHorizontal: 20,
+    marginHorizontal: 10,
     marginBottom: 20,
   },
 });

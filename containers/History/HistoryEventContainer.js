@@ -2,7 +2,7 @@ import { useSelector } from "react-redux";
 import EventCardComponent from "../../components/Card/EventCard";
 import { FlatList } from "react-native";
 
-const HistoryEventContainer = () => {
+const HistoryEventContainer = ({ navigation }) => {
   const eventData = useSelector((state) => state.event.event);
   const userdata = useSelector((state) => state.login.name);
 
@@ -15,6 +15,7 @@ const HistoryEventContainer = () => {
             eventDate={item.tanggalAwal}
             eventName={item.namaAcara}
             status={item.status}
+            onPress={() => navigation.navigate("DetailEvent", { data: item })}
           />
         )}
       />
