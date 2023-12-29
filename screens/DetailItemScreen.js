@@ -17,6 +17,7 @@ const DetailItemScreen = ({ navigation, route }) => {
 
 const styles = StyleSheet.create({
   container: { flex: 1 },
+  content: { flex: 1 },
 });
 
 export default DetailItemScreen;

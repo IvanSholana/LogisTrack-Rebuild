@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import ItemAppBarContainer from "./ItemAppBar";
 import UserItemComponent from "../../components/Item/UserItemComponent";
 import { FlatList, StyleSheet, View } from "react-native";
@@ -12,10 +12,10 @@ import ButtonComponent from "../../components/Button/ButtonComponent";
 import { colors } from "../../constants/colors";
 
 const UserItemContainer = ({ navigation, route }) => {
-  const [activeScreen, setActiveScreen] = useState(screen);
+  const [activeScreen, setActiveScreen] = useState("Peralatan");
   const { itemsreservation: itemsdata, roomsreservation: itemsroom } =
     useSelector((state) => state.reservation);
-
+  const allitem = useSelector((state) => state.itemNroom.itemsdata);
   const currentDate = new Date();
   const formattedDate = currentDate
     .toISOString()
@@ -83,7 +83,15 @@ const UserItemContainer = ({ navigation, route }) => {
           <FlatList
             data={itemsdata}
             renderItem={({ item }) => (
-              <UserItemComponent data={item} addItem={updateData} />
+              <UserItemComponent
+                data={item}
+                addItem={updateData}
+                onPress={() =>
+                  navigation.navigate("DetailItem", {
+                    data: allitem.find((e) => e.nama == item.nama),
+                  })
+                }
+              />
             )}
             keyExtractor={(item) => item.nama}
           />

@@ -2,10 +2,9 @@ import React, { useState } from "react";
 import { Pressable, StyleSheet, Text, View } from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome";
 import { useSelector, useDispatch } from "react-redux";
-import { setReservation } from "../../redux/ReservationSlice";
 import { colors } from "../../constants/colors";
 
-const UserItemComponent = ({ data, addItem }) => {
+const UserItemComponent = ({ data, addItem, onPress }) => {
   const itemsdata = useSelector((state) => state.itemNroom.itemsdata);
   const activeItem = itemsdata.find((e) => e.nama == data.nama);
 
@@ -27,7 +26,7 @@ const UserItemComponent = ({ data, addItem }) => {
 
   return (
     <View style={styles.container}>
-      <Pressable>
+      <Pressable onPress={onPress}>
         <Text style={styles.itemName}>{data.nama}</Text>
       </Pressable>
       <View style={styles.countItem}>

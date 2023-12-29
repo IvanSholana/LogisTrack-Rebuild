@@ -15,6 +15,7 @@ import store from "./redux/Store";
 import CheckoutScreen from "./screens/CheckoutScreen";
 import DetailItemScreen from "./screens/DetailItemScreen";
 import { GluestackUIProvider, Text } from "@gluestack-ui/themed";
+import { config } from "@gluestack-ui/config";
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -75,7 +76,7 @@ export default function App() {
     <GluestackUIProvider config={config}>
       <Provider store={store}>
         <NavigationContainer>
-          <Stack.Navigator initialRouteName="DetailItem">
+          <Stack.Navigator initialRouteName="Login">
             <Stack.Screen
               name="Login"
               component={LoginScreen}
