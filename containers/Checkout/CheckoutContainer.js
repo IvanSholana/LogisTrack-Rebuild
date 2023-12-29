@@ -1,19 +1,14 @@
 import { useDispatch, useSelector } from "react-redux";
 import TableComponent from "../../components/Table/TableComponent";
-import {
-  ScrollView,
-  StyleSheet,
-  Text,
-  TextComponent,
-  TextInput,
-  View,
-} from "react-native";
+import { ScrollView, StyleSheet, View } from "react-native";
 import TextInputComponent from "../../components/TextInput/TextInputComponent";
 import ButtonComponent from "../../components/Button/ButtonComponent";
 import { colors } from "../../constants/colors";
 import { useEffect, useState } from "react";
 import WarningText from "../../components/WarningText/WarningTextComponent";
 import { setReservation } from "../../redux/ReservationSlice";
+import { setEvent } from "../../redux/EventSlice";
+import itemList from "../../data/local/ItemData";
 
 const CheckoutContainer = ({ navigation, route }) => {
   const { itemsreservation: itemsdata, roomsreservation: itemsroom } =
@@ -44,8 +39,10 @@ const CheckoutContainer = ({ navigation, route }) => {
       data.length > 0 &&
       itemsdata &&
       itemsroom &&
-      startDate &&
-      endDate &&
+      tanggalMulai &&
+      tanggalAkhir &&
+      jamMulai &&
+      jamAkhir &&
       namaEvent.trim() !== ""
     ) {
       const currentTime = new Date();
@@ -64,7 +61,14 @@ const CheckoutContainer = ({ navigation, route }) => {
         status: "Diajukan",
       };
 
-      dispatch(setReservation([...eventData, NewReservation]));
+      dispatch(setEvent({ event: [...eventData, NewReservation] }));
+      dispatch(
+        setReservation({
+          itemsreservation: itemList.map((e) => ({ nama: e.nama, jumlah: 0 })),
+          roomsreservation: [],
+        })
+      );
+      navigation.navigate("Item", { screen: "Peralatan" });
     } else {
       setIsSucces(true);
     }
@@ -92,7 +96,6 @@ const CheckoutContainer = ({ navigation, route }) => {
           {isSuccess && (
             <WarningText content={"Pastikan semua data telah terisi!"} />
           )}
-
           <TextInputComponent
             textinputname={"Waktu Mulai"}
             isEdit={false}
@@ -101,7 +104,6 @@ const CheckoutContainer = ({ navigation, route }) => {
           {isSuccess && (
             <WarningText content={"Pastikan semua data telah terisi!"} />
           )}
-
           <TextInputComponent
             textinputname={"Tanggal Selesai"}
             isEdit={false}
@@ -110,7 +112,6 @@ const CheckoutContainer = ({ navigation, route }) => {
           {isSuccess && (
             <WarningText content={"Pastikan semua data telah terisi!"} />
           )}
-
           <TextInputComponent
             textinputname={"Waktu Selesai"}
             isEdit={false}

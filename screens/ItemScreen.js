@@ -8,7 +8,7 @@ const ItemScreen = ({ navigation, route }) => {
   return (
     <>
       {status === "Dosen" || status === "Mahasiswa" ? (
-        <UserItemContainer navigation={navigation} />
+        <UserItemContainer navigation={navigation} route={route} />
       ) : (
         <AdminItemContainer />
       )}

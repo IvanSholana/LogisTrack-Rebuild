@@ -10,19 +10,18 @@ import FloatingButtonComponent from "../../components/FloatingButton/FloatingBut
 import DatePickers from "../../components/DatePicker/DatePickerComponent";
 import ButtonComponent from "../../components/Button/ButtonComponent";
 import { colors } from "../../constants/colors";
-import { setDate } from "../../redux/DateSlice";
 
 const UserItemContainer = ({ navigation, route }) => {
-  const [activeScreen, setActiveScreen] = useState("Peralatan");
+  const [activeScreen, setActiveScreen] = useState(screen);
   const { itemsreservation: itemsdata, roomsreservation: itemsroom } =
     useSelector((state) => state.reservation);
+
   const currentDate = new Date();
   const formattedDate = currentDate
     .toISOString()
     .slice(0, 19)
     .replace("T", " ");
 
-  console.log(formattedDate);
   const dispatch = useDispatch();
   const [isVisible, setVisible] = useState(false);
   const [isStartDate, setIsStartDate] = useState(true);

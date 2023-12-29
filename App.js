@@ -13,6 +13,8 @@ import ProfileScreen from "./screens/ProfileScreen";
 import { colors } from "./constants/colors";
 import store from "./redux/Store";
 import CheckoutScreen from "./screens/CheckoutScreen";
+import DetailItemScreen from "./screens/DetailItemScreen";
+import { GluestackUIProvider, Text } from "@gluestack-ui/themed";
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -70,32 +72,39 @@ const TabsScreen = () => {
 
 export default function App() {
   return (
-    <Provider store={store}>
-      <NavigationContainer>
-        <Stack.Navigator initialRouteName="Login">
-          <Stack.Screen
-            name="Login"
-            component={LoginScreen}
-            options={{ headerShown: false }}
-          />
-          <Stack.Screen
-            name="Register"
-            component={RegisterScreen}
-            options={{ headerShown: false }}
-          />
-          <Stack.Screen
-            name="MainMenu"
-            component={TabsScreen}
-            options={{ headerShown: false }}
-          />
-          <Stack.Screen
-            name="Checkout"
-            component={CheckoutScreen}
-            options={{ headerShown: false }}
-          />
-        </Stack.Navigator>
-      </NavigationContainer>
-    </Provider>
+    <GluestackUIProvider config={config}>
+      <Provider store={store}>
+        <NavigationContainer>
+          <Stack.Navigator initialRouteName="DetailItem">
+            <Stack.Screen
+              name="Login"
+              component={LoginScreen}
+              options={{ headerShown: false }}
+            />
+            <Stack.Screen
+              name="Register"
+              component={RegisterScreen}
+              options={{ headerShown: false }}
+            />
+            <Stack.Screen
+              name="MainMenu"
+              component={TabsScreen}
+              options={{ headerShown: false }}
+            />
+            <Stack.Screen
+              name="Checkout"
+              component={CheckoutScreen}
+              options={{ headerShown: false }}
+            />
+            <Stack.Screen
+              name="DetailItem"
+              component={DetailItemScreen}
+              options={{ headerShown: false }}
+            />
+          </Stack.Navigator>
+        </NavigationContainer>
+      </Provider>
+    </GluestackUIProvider>
   );
 }
 
