@@ -2,7 +2,7 @@ import { useSelector } from "react-redux";
 import AdminItemContainer from "../containers/Item/AdminItemContainer";
 import UserItemContainer from "../containers/Item/UserItemContainer";
 
-const ItemScreen = ({ navigation }) => {
+const ItemScreen = ({ navigation, route }) => {
   const status = useSelector((state) => state.login.status);
 
   return (

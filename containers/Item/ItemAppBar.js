@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import Icon from "react-native-vector-icons/FontAwesome";
 
-const ItemAppBarContainer = ({ content, shownScreen, navigation }) => {
+const ItemAppBarContainer = ({ content, shownScreen, navigation, data }) => {
   const [activeScreen, setActiveSceen] = useState(true);
 
   useEffect(() => {
@@ -24,12 +24,11 @@ const ItemAppBarContainer = ({ content, shownScreen, navigation }) => {
           <Text style={styles.headerText}>{content}</Text>
           <TouchableOpacity
             style={styles.checkout}
-            onPress={() => navigation.navigate("Checkout")}
+            onPress={() => navigation.navigate("Checkout", { eventDate: data })}
           >
             <Icon name="shopping-cart" size={30} color="#333" />
           </TouchableOpacity>
         </View>
-
         <View style={styles.navigation}>
           <TextButtonComponent
             text={"Peralatan"}

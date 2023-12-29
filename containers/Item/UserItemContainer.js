@@ -12,15 +12,22 @@ import ButtonComponent from "../../components/Button/ButtonComponent";
 import { colors } from "../../constants/colors";
 import { setDate } from "../../redux/DateSlice";
 
-const UserItemContainer = ({ navigation }) => {
+const UserItemContainer = ({ navigation, route }) => {
   const [activeScreen, setActiveScreen] = useState("Peralatan");
   const { itemsreservation: itemsdata, roomsreservation: itemsroom } =
     useSelector((state) => state.reservation);
+  const currentDate = new Date();
+  const formattedDate = currentDate
+    .toISOString()
+    .slice(0, 19)
+    .replace("T", " ");
+
+  console.log(formattedDate);
   const dispatch = useDispatch();
   const [isVisible, setVisible] = useState(false);
   const [isStartDate, setIsStartDate] = useState(true);
-  const [startDate, setStartDate] = useState();
-  const [endDate, setEndDate] = useState();
+  const [startDate, setStartDate] = useState(formattedDate);
+  const [endDate, setEndDate] = useState(formattedDate);
 
   const CalendarHandling = (date) => {
     if (isStartDate) {
@@ -29,10 +36,6 @@ const UserItemContainer = ({ navigation }) => {
       setEndDate(date);
     }
   };
-
-  useEffect(() => {
-    dispatch(setDate({ startDate, endDate }));
-  }, [startDate, endDate, dispatch]);
 
   const updateData = (nama, newValue) => {
     const updatedItemsData = itemsdata.map((item) => {
@@ -73,6 +76,8 @@ const UserItemContainer = ({ navigation }) => {
         content={"Inventory"}
         shownScreen={setActiveScreen}
         navigation={navigation}
+        data={[startDate, endDate]}
+        route={route}
       />
       <View style={styles.itemSection}>
         {activeScreen == "Peralatan" ? (
