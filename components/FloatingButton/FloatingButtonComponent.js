@@ -20,14 +20,7 @@ const styles = StyleSheet.create({
     height: 70,
     backgroundColor: colors.buttonLogin,
     borderRadius: 100,
-    elevation: 5, // Atau gunakan shadow properties berikut
-    // shadowColor: '#000',
-    // shadowOffset: { width: 0, height: 2 },
-    // shadowOpacity: 0.8,
-    // shadowRadius: 3,
-    right: 20,
-    bottom: 20, // Sesuaikan dengan kebutuhan
-    position: "absolute",
+    elevation: 5,
   },
 });
 

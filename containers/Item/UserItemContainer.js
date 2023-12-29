@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ItemAppBarContainer from "./ItemAppBar";
 import UserItemComponent from "../../components/Item/UserItemComponent";
 import { FlatList, StyleSheet, View } from "react-native";
@@ -7,13 +7,32 @@ import CheckBoxComponent from "../../components/CheckBox/CheckBoxComponent";
 import roomList from "../../data/local/RoomData";
 import { setReservation } from "../../redux/ReservationSlice";
 import FloatingButtonComponent from "../../components/FloatingButton/FloatingButtonComponent";
+import DatePickers from "../../components/DatePicker/DatePickerComponent";
+import ButtonComponent from "../../components/Button/ButtonComponent";
+import { colors } from "../../constants/colors";
+import { setDate } from "../../redux/DateSlice";
 
 const UserItemContainer = ({ navigation }) => {
   const [activeScreen, setActiveScreen] = useState("Peralatan");
   const { itemsreservation: itemsdata, roomsreservation: itemsroom } =
     useSelector((state) => state.reservation);
   const dispatch = useDispatch();
-  const [calendar, setCalendar] = useState();
+  const [isVisible, setVisible] = useState(false);
+  const [isStartDate, setIsStartDate] = useState(true);
+  const [startDate, setStartDate] = useState();
+  const [endDate, setEndDate] = useState();
+
+  const CalendarHandling = (date) => {
+    if (isStartDate) {
+      setStartDate(date);
+    } else {
+      setEndDate(date);
+    }
+  };
+
+  useEffect(() => {
+    dispatch(setDate({ startDate, endDate }));
+  }, [startDate, endDate, dispatch]);
 
   const updateData = (nama, newValue) => {
     const updatedItemsData = itemsdata.map((item) => {
@@ -78,8 +97,30 @@ const UserItemContainer = ({ navigation }) => {
           />
         )}
       </View>
+      <DatePickers
+        setValue={CalendarHandling}
+        isVisible={isVisible}
+        setVisible={setVisible}
+        content={
+          isStartDate ? "Tanggal Awal Peminjaman" : "Tanggal Akhir Peminjaman"
+        }
+        item={
+          <ButtonComponent
+            onPress={() => setIsStartDate(!isStartDate)}
+            buttonstyle={{ backgroundColor: colors.buttonLogin }}
+            buttontext={
+              isStartDate
+                ? "Tanggal Akhir Peminjaman"
+                : "Tanggal Awal Peminjaman"
+            }
+          />
+        }
+      />
       <View style={styles.calendar}>
-        <FloatingButtonComponent icon={"calendar"} onpress={setCalendar} />
+        <FloatingButtonComponent
+          icon={"calendar"}
+          onpress={() => setVisible(true)}
+        />
       </View>
     </>
   );
@@ -88,9 +129,9 @@ const UserItemContainer = ({ navigation }) => {
 const styles = StyleSheet.create({
   itemSection: { flex: 1 },
   calendar: {
-    position: "absolute",
-    bottom: 16, // Sesuaikan dengan jarak dari bawah
-    right: 16, // Sesuaikan dengan jarak dari kanan
+    marginVertical: 10,
+    alignItems: "flex-end",
+    paddingHorizontal: 20,
   },
 });
 

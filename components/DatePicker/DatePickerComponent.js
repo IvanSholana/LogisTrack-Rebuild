@@ -1,6 +1,6 @@
 import DateTimePicker from "react-native-ui-datepicker";
 import { Dialog } from "react-native-simple-dialogs";
-import { StyleSheet, View } from "react-native";
+import { StyleSheet, Text, View } from "react-native";
 
 const DatePickers = ({
   isVisible,
@@ -9,6 +9,7 @@ const DatePickers = ({
   item,
   value,
   setValue,
+  content,
 }) => {
   return (
     <Dialog
@@ -17,6 +18,16 @@ const DatePickers = ({
       onTouchOutside={() => setVisible(false)}
     >
       <View>
+        <Text
+          style={{
+            textAlign: "center",
+            fontWeight: "bold",
+            fontSize: 20,
+            marginBottom: 10,
+          }}
+        >
+          {content}
+        </Text>
         <View>
           <DateTimePicker
             value={value}

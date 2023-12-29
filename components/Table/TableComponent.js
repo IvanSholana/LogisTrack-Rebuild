@@ -24,7 +24,7 @@ const TableComponent = ({ data }) => {
             />
           ) : (
             <View style={styles.content}>
-              <Text style={styles.textContent}>KOSONG</Text>
+              <Text style={styles.textContent}>KERANJANG KOSONG</Text>
             </View>
           )}
         </View>
