@@ -21,11 +21,13 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
   },
   headerText: {
-    fontSize: 24,
+    fontSize: 30,
     color: "#6A994E",
     textAlignVertical: "center",
     paddingLeft: 20,
     backgroundColor: colors.loginText,
+    fontWeight: "bold",
+    fontStyle: "italic",
   },
 });
 

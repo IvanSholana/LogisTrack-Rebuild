@@ -149,8 +149,10 @@ const styles = StyleSheet.create({
   },
   buttonContainer: {
     marginTop: 90,
-    justifyContent: "flex-end",
+    justifyContent: "space-between",
     marginHorizontal: 10,
+    height: 140,
+    padding: 10,
   },
 });
 

@@ -33,7 +33,7 @@ const AdminItemContainer = ({ navigation, route }) => {
       <View style={{ paddingTop: 10 }}>
         <ButtonComponent
           buttontext={"Tambah Inventaris"}
-          buttonstyle={{ backgroundColor: colors.buttonLogin }}
+          buttonstyle={{ backgroundColor: colors.buttonLogin, margin: 10 }}
         />
         {activeScreen == "Peralatan" ? (
           <FlatList

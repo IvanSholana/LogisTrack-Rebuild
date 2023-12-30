@@ -25,15 +25,19 @@ const UserProfileContainer = () => {
 };
 
 const UserProfileAppBar = ({ navigation }) => {
+  const userdata = useSelector((state) => state.login);
+
   const [dialogVisible, setDialogVisible] = useState(false);
   return (
     <>
       <View style={styles.container}>
         <Text style={styles.headerText}>Profile Account</Text>
         <View style={styles.buttonContainer}>
-          <TouchableOpacity onPress={() => setDialogVisible(true)}>
-            <Icon name="info-circle" size={30} color={colors.registerText} />
-          </TouchableOpacity>
+          {userdata.status != "Admin" ? (
+            <TouchableOpacity onPress={() => setDialogVisible(true)}>
+              <Icon name="info-circle" size={30} color={colors.registerText} />
+            </TouchableOpacity>
+          ) : null}
           <TouchableOpacity
             onPress={() => {
               navigation.navigate("Login");
@@ -99,11 +103,13 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
   },
   headerText: {
-    fontSize: 24,
+    fontSize: 30,
     color: "#6A994E",
     textAlignVertical: "center",
     paddingLeft: 20,
     backgroundColor: colors.loginText,
+    fontWeight: "bold",
+    fontStyle: "italic",
   },
   label: {
     fontSize: 20,

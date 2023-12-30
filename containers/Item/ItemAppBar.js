@@ -60,17 +60,19 @@ const ItemAppBarContainer = ({ content, shownScreen, navigation, data }) => {
 
 const styles = StyleSheet.create({
   container: {
-    paddingTop: 35,
+    paddingTop: 40,
     backgroundColor: "#fff",
     overflow: "hidden",
     borderBottomColor: "#D9D9D9",
   },
   headerText: {
-    fontSize: 24,
+    fontSize: 30,
     color: "#6A994E",
     textAlignVertical: "center",
     paddingLeft: 20,
     backgroundColor: colors.loginText,
+    fontWeight: "bold",
+    fontStyle: "italic",
   },
   navigation: {
     marginTop: 10,
