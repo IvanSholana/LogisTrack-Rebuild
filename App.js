@@ -19,6 +19,7 @@ import DetailRoomScreen from "./screens/DetailRoomScreen";
 import EventDetailScreen from "./screens/EventDetailScreen";
 import AdminEditScreen from "./screens/AdminEditScreen";
 import AdminResponseScreen from "./screens/AdminResponseEventScreen";
+import AddItemScreen from "./screens/AddItemScreen";
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -79,7 +80,7 @@ export default function App() {
     <GluestackUIProvider config={config}>
       <Provider store={store}>
         <NavigationContainer>
-          <Stack.Navigator initialRouteName="Login">
+          <Stack.Navigator initialRouteName="AddItem">
             <Stack.Screen
               name="Login"
               component={LoginScreen}
@@ -123,6 +124,11 @@ export default function App() {
             <Stack.Screen
               name="AdminResponse"
               component={AdminResponseScreen}
+              options={{ headerShown: false }}
+            />
+            <Stack.Screen
+              name="AddItem"
+              component={AddItemScreen}
               options={{ headerShown: false }}
             />
           </Stack.Navigator>
