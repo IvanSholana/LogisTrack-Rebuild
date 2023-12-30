@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { StyleSheet, Text, View } from "react-native";
 import { colors } from "../../constants/colors";
 import ButtonComponent from "../../components/Button/ButtonComponent";
@@ -6,6 +6,9 @@ import { useDispatch, useSelector } from "react-redux";
 import TableComponent from "../../components/Table/TableComponent";
 import { View as ThemedView } from "@gluestack-ui/themed";
 import { setEvent } from "../../redux/EventSlice";
+import DialogComponent from "../../components/Dialog/DialogComponent";
+import TextInputComponent from "../../components/TextInput/TextInputComponent";
+import { ScrollView } from "react-native-gesture-handler";
 
 const AdminResponseContainer = ({ navigation, route }) => {
   const { data } = route.params;
@@ -13,7 +16,9 @@ const AdminResponseContainer = ({ navigation, route }) => {
   const alldatareservation = useSelector((state) => state.event.event);
   const datareservation = alldatareservation.find((e) => e.id == data.id);
 
-  console.log("Data reservation : ");
+  const [isVisible, setVisible] = useState(false);
+  const [message, setMessage] = useState("");
+  const [confirmation, setConfirmation] = useState(false);
 
   const dispatch = useDispatch();
   const itemsdata = [
@@ -33,55 +38,111 @@ const AdminResponseContainer = ({ navigation, route }) => {
       );
       dispatch(setEvent({ event: updateEvent }));
     } else {
-      const updateEvent = alldatareservation.map((item) =>
-        item.id === data.id
-          ? {
-              ...item,
-              status: "Ditolak",
-            }
-          : item
-      );
-      dispatch(setEvent({ event: updateEvent }));
+      if (confirmation == false) {
+        return;
+      } else {
+        setVisible(false);
+        const updateEvent = alldatareservation.map((item) =>
+          item.id === data.id
+            ? {
+                ...item,
+                status: "Ditolak",
+                pesan: message,
+              }
+            : item
+        );
+        dispatch(setEvent({ event: updateEvent }));
+      }
     }
 
     navigation.goBack();
   };
 
-  console.log(data);
   return (
     <ThemedView style={styles.container}>
       <View style={styles.content}>
-        <TableComponent data={itemsdata} />
-        <View style={{ marginTop: 20 }}>
-          <Text style={styles.label}>Nama Peminjam</Text>
-          <Text style={styles.textContent}>{datareservation.namaPeminjam}</Text>
-          <Text style={styles.label}>Nama Kegiatan</Text>
-          <Text style={styles.textContent}>{datareservation.namaAcara}</Text>
-          <Text style={styles.label}>Timeline Peminjaman</Text>
-          <Text style={styles.textContent}>
-            {datareservation.tanggalAwal} ({datareservation.waktuAwal}) s/d{" "}
-            {datareservation.tanggalAkhir} ({datareservation.waktuAkhir})
-          </Text>
+        <View>
+          <TableComponent data={itemsdata} />
         </View>
+        <ScrollView>
+          <View style={{ flex: 1 }}>
+            <View style={{ marginTop: 20 }}>
+              <Text style={styles.label}>Nama Peminjam</Text>
+              <Text style={styles.textContent}>
+                {datareservation.namaPeminjam}
+              </Text>
+              <Text style={styles.label}>Nama Kegiatan</Text>
+              <Text style={styles.textContent}>
+                {datareservation.namaAcara}
+              </Text>
+              <Text style={styles.label}>Timeline Peminjaman</Text>
+              <Text style={styles.textContent}>
+                {datareservation.tanggalAwal} ({datareservation.waktuAwal}) s/d{" "}
+                {datareservation.tanggalAkhir} ({datareservation.waktuAkhir})
+              </Text>
+            </View>
+            <View style={styles.buttonContainer}>
+              <ButtonComponent
+                buttontext={"ACC PEMINJAMAN"}
+                buttonstyle={{ backgroundColor: colors.buttonLogin }}
+                onPress={() => responseEventHandling("ACC")}
+              />
+              <ButtonComponent
+                buttontext={"TOLAK PEMINJAMAN"}
+                buttonstyle={{ backgroundColor: colors.eventRejected }}
+                onPress={() => {
+                  setVisible(true);
+                }}
+              />
+            </View>
+            <ButtonComponent
+              buttontext={"KEMBALI"}
+              buttonstyle={{
+                backgroundColor: colors.buttonLogin,
+                marginTop: 10,
+              }}
+              onPress={() => navigation.goBack()}
+            />
+          </View>
+        </ScrollView>
       </View>
-      <View style={styles.buttonContainer}>
-        <ButtonComponent
-          buttontext={"ACC PEMINJAMAN"}
-          buttonstyle={{ backgroundColor: colors.buttonLogin }}
-          onPress={() => responseEventHandling("ACC")}
-        />
-        <ButtonComponent
-          buttontext={"TOLAK PEMINJAMAN"}
-          buttonstyle={{ backgroundColor: colors.eventRejected }}
-          onPress={() => responseEventHandling("TOLAK")}
-        />
-      </View>
-      <ButtonComponent
-        buttontext={"KEMBALI"}
-        buttonstyle={{ backgroundColor: colors.buttonLogin, margin: 10 }}
-        onPress={() => navigation.goBack()}
+      <DialogComponent
+        isVisible={isVisible}
+        content={
+          <DialogMessage
+            setMessage={setMessage}
+            setConfirmation={setConfirmation}
+            setVisible={setVisible}
+            setRespondHandling={responseEventHandling}
+          />
+        }
+        setVisible={setVisible}
+        title={"Alasan Penolakan : "}
       />
     </ThemedView>
+  );
+};
+
+const DialogMessage = ({ setMessage, setConfirmation, setRespondHandling }) => {
+  return (
+    <>
+      <TextInputComponent
+        placeholder={"Masukkan Alasan..."}
+        setValue={setMessage}
+      />
+      <ButtonComponent
+        buttontext={"KONFIRMASI PENOLAKAN"}
+        buttonstyle={{
+          backgroundColor: colors.eventRejected,
+          width: "95%",
+          alignSelf: "center",
+        }}
+        onPress={() => {
+          setConfirmation(true);
+          setRespondHandling("TOLAK");
+        }}
+      />
+    </>
   );
 };
 
@@ -92,8 +153,6 @@ const styles = StyleSheet.create({
   },
   content: {
     padding: 20,
-
-    flex: 1,
   },
   label: {
     fontWeight: "bold",
@@ -105,9 +164,9 @@ const styles = StyleSheet.create({
     fontSize: 16,
   },
   buttonContainer: {
+    marginTop: 50,
     flexDirection: "row",
     justifyContent: "space-between",
-    padding: 10,
   },
 });
 

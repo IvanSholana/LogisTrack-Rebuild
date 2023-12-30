@@ -1,6 +1,6 @@
 import React from "react";
 import { Dialog } from "react-native-simple-dialogs";
-import { Text, View } from "react-native";
+import { StyleSheet, Text, View } from "react-native";
 
 const DialogComponent = ({
   isVisible,
@@ -21,12 +21,12 @@ const DialogComponent = ({
   );
 };
 
-const styles = {
+const styles = StyleSheet.create({
   title: {
     fontSize: 24,
     color: "#6A994E",
     textAlign: "center",
   },
-};
+});
 
 export default DialogComponent;

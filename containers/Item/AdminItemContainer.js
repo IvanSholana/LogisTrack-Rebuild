@@ -8,7 +8,7 @@ import ButtonComponent from "../../components/Button/ButtonComponent";
 import { colors } from "../../constants/colors";
 import { setItemRoom } from "../../redux/ItemRoomSlice";
 
-const AdminItemContainer = ({ navigation, route }) => {
+const AdminItemContainer = ({ navigation }) => {
   const [activeScreen, setActiveScreen] = useState("Peralatan");
   const { itemsdata, roomsdata } = useSelector((state) => state.itemNroom);
 
@@ -23,6 +23,9 @@ const AdminItemContainer = ({ navigation, route }) => {
       dispatch(setItemRoom({ itemsdata: itemsdata, roomsdata: newdata }));
     }
   };
+
+  console.log(itemsdata);
+  console.log(itemsdata[itemsdata.length - 1]);
 
   return (
     <>

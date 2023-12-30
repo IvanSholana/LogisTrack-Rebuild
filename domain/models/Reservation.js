@@ -9,7 +9,8 @@ class Reservation {
     waktuAwal,
     tanggalAkhir,
     waktuAkhir,
-    status
+    status,
+    pesan
   ) {
     this.id = id;
     this.namaPeminjam = namaPeminjam;
@@ -21,6 +22,7 @@ class Reservation {
     this.tanggalAkhir = tanggalAkhir;
     this.waktuAkhir = waktuAkhir;
     this.status = status;
+    this.pesan = pesan;
   }
 
   toSerializableObject() {
@@ -35,6 +37,7 @@ class Reservation {
       tanggalAkhir: this.tanggalAkhir,
       waktuAkhir: this.waktuAkhir,
       status: this.status,
+      pesan: this.pesan,
     };
   }
 }

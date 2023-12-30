@@ -16,7 +16,8 @@ const peminjamanList = [
     "00:00",
     "2023-01-02",
     "23:59",
-    "Diajukan"
+    "Diajukan",
+    ""
   ),
   new Reservation(
     "002",
@@ -31,7 +32,8 @@ const peminjamanList = [
     "00:00",
     "2023-02-03",
     "23:59",
-    "Diajukan"
+    "Diajukan",
+    ""
   ),
   new Reservation(
     "003",
@@ -46,10 +48,10 @@ const peminjamanList = [
     "00:00",
     "2023-03-02",
     "23:59",
-    "Ditolak"
+    "Ditolak",
+    ""
   ),
 
-  // Data tambahan
   new Reservation(
     "004",
     "Alice Brown",
@@ -63,7 +65,8 @@ const peminjamanList = [
     "00:00",
     "2023-04-02",
     "23:59",
-    "Diajukan"
+    "Diajukan",
+    ""
   ),
   new Reservation(
     "005",
@@ -78,7 +81,8 @@ const peminjamanList = [
     "00:00",
     "2023-05-02",
     "23:59",
-    "Disetujui"
+    "Disetujui",
+    ""
   ),
   new Reservation(
     "006",
@@ -93,7 +97,8 @@ const peminjamanList = [
     "00:00",
     "2023-06-02",
     "23:59",
-    "Selesai"
+    "Selesai",
+    ""
   ),
   new Reservation(
     "007",
@@ -108,7 +113,8 @@ const peminjamanList = [
     "00:00",
     "2023-07-02",
     "23:59",
-    "Ditolak"
+    "Ditolak",
+    ""
   ),
   new Reservation(
     "008",
@@ -123,7 +129,8 @@ const peminjamanList = [
     "00:00",
     "2023-08-02",
     "23:59",
-    "Diajukan"
+    "Diajukan",
+    ""
   ),
   new Reservation(
     "009",
@@ -138,7 +145,8 @@ const peminjamanList = [
     "00:00",
     "2023-09-02",
     "23:59",
-    "Disetujui"
+    "Disetujui",
+    ""
   ),
   new Reservation(
     "010",
@@ -153,7 +161,8 @@ const peminjamanList = [
     "00:00",
     "2023-10-02",
     "23:59",
-    "Selesai"
+    "Selesai",
+    ""
   ),
 ];
 

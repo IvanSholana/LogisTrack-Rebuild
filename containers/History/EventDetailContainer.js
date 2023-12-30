@@ -21,6 +21,8 @@ const EventDetailContainer = ({ navigation, route }) => {
       ? colors.eventRejected
       : colors.eventCompleted;
 
+  const pesanTampilan = data.pesan === "" ? "Tidak Ada Pesan" : data.pesan;
+
   return (
     <>
       <View style={styles.content}>
@@ -35,6 +37,8 @@ const EventDetailContainer = ({ navigation, route }) => {
         <Text style={[styles.status, { backgroundColor: eventStatusColor }]}>
           {data.status}
         </Text>
+        <Text style={[styles.label, { marginTop: 20 }]}>Pesan Logistik : </Text>
+        <Text style={styles.textContent}>{pesanTampilan}</Text>
       </View>
       <View style={styles.buttonContainer}>
         <ButtonComponent
