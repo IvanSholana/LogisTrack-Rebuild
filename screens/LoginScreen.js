@@ -35,8 +35,10 @@ const styles = StyleSheet.create({
   cover: {
     flex: 1,
     alignItems: "center",
+    marginBottom: 20,
   },
   logo: {
+    marginTop: 20,
     marginRight: 10,
     marginBottom: 10,
   },

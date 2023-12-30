@@ -35,7 +35,6 @@ const styles = StyleSheet.create({
     paddingVertical: 15,
     borderRadius: 10,
     shadowColor: "black",
-    marginHorizontal: 10,
     marginTop: 15,
   },
   status: {

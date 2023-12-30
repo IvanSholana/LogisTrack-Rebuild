@@ -10,13 +10,13 @@ const ProfileScreen = ({ navigation }) => {
   const status = useSelector((state) => state.login.status);
   return (
     <>
-      <View>
+      <View style={{ flex: 1 }}>
         <UserProfileAppBar navigation={navigation} />
         <View style={styles.content}>
           {status !== "Admin" ? (
             <UserProfileContainer />
           ) : (
-            <AdminProfileContainier />
+            <AdminProfileContainier navigation={navigation} />
           )}
         </View>
       </View>
@@ -26,6 +26,7 @@ const ProfileScreen = ({ navigation }) => {
 
 const styles = StyleSheet.create({
   content: {
+    flex: 1,
     marginVertical: 10,
     marginHorizontal: 15,
   },
