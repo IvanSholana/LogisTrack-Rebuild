@@ -20,7 +20,12 @@ const HistoryEventContainer = ({ navigation }) => {
             eventDate={item.tanggalAwal}
             eventName={item.namaAcara}
             status={item.status}
-            onPress={() => navigation.navigate("DetailEvent", { data: item })}
+            onPress={() =>
+              navigation.navigate(
+                status == "Admin" ? "AdminResponse" : "DetailEvent",
+                { data: item }
+              )
+            }
           />
         )}
       />

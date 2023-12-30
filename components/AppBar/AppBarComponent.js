@@ -13,7 +13,7 @@ const AppBarComponent = ({ content }) => {
 
 const styles = StyleSheet.create({
   container: {
-    paddingTop: 30,
+    paddingTop: 50,
     paddingBottom: 10,
     backgroundColor: "#fff",
     overflow: "hidden",

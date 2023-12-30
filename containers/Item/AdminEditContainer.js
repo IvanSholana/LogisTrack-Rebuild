@@ -35,14 +35,13 @@ const AdminEditContainer = ({ route, navigation }) => {
         item.id === data.id
           ? {
               ...item,
-              nama: editedItem.nama, // Update nama
+              nama: editedItem.nama,
               deskripsi: editedItem.deskripsi,
               jumlah: editedItem.jumlah,
             }
           : item
       );
 
-      console.log(updatedItemsData[0]);
       dispatch(setItemRoom({ itemsdata: updatedItemsData, roomsdata }));
     } else {
       if (
@@ -58,7 +57,7 @@ const AdminEditContainer = ({ route, navigation }) => {
         data.id === room.id
           ? {
               ...room,
-              nama: editedItem.nama, // Update nama
+              nama: editedItem.nama,
               deskripsi: editedItem.deskripsi,
               kapasitas: editedItem.kapasitas,
             }

@@ -55,7 +55,6 @@ const styles = StyleSheet.create({
     fontSize: 25,
     color: colors.buttonLogin,
   },
-
   textContent: {
     marginTop: 2,
     fontSize: 16,

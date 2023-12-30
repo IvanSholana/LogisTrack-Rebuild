@@ -142,7 +142,6 @@ const styles = StyleSheet.create({
   tableSection: {
     margin: 10,
   },
-  formSection: {},
   input: {
     height: 40,
     borderColor: "#ccc", // Warna border input
@@ -159,6 +158,12 @@ const styles = StyleSheet.create({
   },
   container: {
     margin: 10,
+  },
+  buttoncontainer: {
+    height: 120,
+    justifyContent: "space-between",
+    marginTop: 10,
+    marginHorizontal: 10,
   },
 });
 

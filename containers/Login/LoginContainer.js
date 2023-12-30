@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { setLogin } from "../../redux/LoginSlice";
 import WarningText from "../../components/WarningText/WarningTextComponent";
 import TextButtonComponent from "../../components/Button/TextButtonComponent";
+import { View } from "@gluestack-ui/themed";
 
 const LoginContainer = ({ navigation }) => {
   const [nimNidn, setnimNidn] = useState("");
@@ -62,16 +63,25 @@ const LoginContainer = ({ navigation }) => {
           additionStyle={{ marginBottom: 5 }}
         />
       )}
-      <ButtonComponent
-        buttontext={"Login"}
-        buttonstyle={{ backgroundColor: colors.buttonLogin }}
-        onPress={loginHandling}
-      />
-      <ButtonComponent
-        buttontext={"Register"}
-        buttonstyle={{ backgroundColor: colors.buttonRegister }}
-        onPress={() => navigation.navigate("Register")}
-      />
+      <View
+        style={{
+          height: 120,
+          justifyContent: "space-between",
+          marginTop: 10,
+          marginHorizontal: 10,
+        }}
+      >
+        <ButtonComponent
+          buttontext={"Login"}
+          buttonstyle={{ backgroundColor: colors.buttonLogin }}
+          onPress={loginHandling}
+        />
+        <ButtonComponent
+          buttontext={"Register"}
+          buttonstyle={{ backgroundColor: colors.buttonRegister }}
+          onPress={() => navigation.navigate("Register")}
+        />
+      </View>
     </>
   );
 };

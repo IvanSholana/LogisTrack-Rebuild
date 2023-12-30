@@ -34,7 +34,11 @@ const UserProfileAppBar = ({ navigation }) => {
           <TouchableOpacity onPress={() => setDialogVisible(true)}>
             <Icon name="info-circle" size={30} color={colors.registerText} />
           </TouchableOpacity>
-          <TouchableOpacity onPress={() => navigation.navigate("Login")}>
+          <TouchableOpacity
+            onPress={() => {
+              navigation.navigate("Login");
+            }}
+          >
             <Icon name="sign-out" size={30} color={colors.registerText} />
           </TouchableOpacity>
         </View>
@@ -85,7 +89,7 @@ const ContactDialog = ({ dialogVisible, setDialogVisible }) => {
 
 const styles = StyleSheet.create({
   container: {
-    paddingTop: 30,
+    paddingTop: 50,
     paddingBottom: 10,
     backgroundColor: "#fff",
     overflow: "hidden",

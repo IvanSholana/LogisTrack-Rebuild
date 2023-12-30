@@ -114,16 +114,25 @@ const RegisterContainer = ({ navigation }) => {
         placeholder={"Masukkan Jawaban Rahasia..."}
         setValue={setJawabanRahasia}
       />
-      <ButtonComponent
-        buttontext={"Daftar"}
-        buttonstyle={{ backgroundColor: colors.buttonLogin }}
-        onPress={RegisterHandle}
-      />
-      <ButtonComponent
-        buttontext={"Batal"}
-        buttonstyle={{ backgroundColor: colors.eventRejected }}
-        onPress={() => navigation.navigate("Login")}
-      />
+      <View
+        style={{
+          height: 120,
+          justifyContent: "space-between",
+          marginTop: 10,
+          marginHorizontal: 10,
+        }}
+      >
+        <ButtonComponent
+          buttontext={"Daftar"}
+          buttonstyle={{ backgroundColor: colors.buttonLogin }}
+          onPress={RegisterHandle}
+        />
+        <ButtonComponent
+          buttontext={"Batal"}
+          buttonstyle={{ backgroundColor: colors.eventRejected }}
+          onPress={() => navigation.navigate("Login")}
+        />
+      </View>
     </>
   );
 };
