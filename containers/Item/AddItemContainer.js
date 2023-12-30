@@ -6,8 +6,8 @@ import { colors } from "../../constants/colors";
 import ButtonComponent from "../../components/Button/ButtonComponent";
 import WarningText from "../../components/WarningText/WarningTextComponent";
 
-const AddItemContainer = () => {
-  const role = "Peralatan";
+const AddItemContainer = ({ route, navigation }) => {
+  const { role } = route.params;
 
   const [itemName, setItemName] = useState("");
   const [description, setDescription] = useState("");
@@ -120,6 +120,7 @@ const AddItemContainer = () => {
             backgroundColor: colors.buttonRegister,
             marginHorizontal: 20,
           }}
+          onPress={() => navigation.goBack()}
         />
       </View>
     </View>

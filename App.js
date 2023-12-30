@@ -80,7 +80,7 @@ export default function App() {
     <GluestackUIProvider config={config}>
       <Provider store={store}>
         <NavigationContainer>
-          <Stack.Navigator initialRouteName="AddItem">
+          <Stack.Navigator initialRouteName="Login">
             <Stack.Screen
               name="Login"
               component={LoginScreen}

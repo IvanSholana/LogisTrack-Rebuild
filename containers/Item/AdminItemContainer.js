@@ -34,6 +34,7 @@ const AdminItemContainer = ({ navigation, route }) => {
         <ButtonComponent
           buttontext={"Tambah Inventaris"}
           buttonstyle={{ backgroundColor: colors.buttonLogin, margin: 10 }}
+          onPress={() => navigation.navigate("AddItem", { role: activeScreen })}
         />
         {activeScreen == "Peralatan" ? (
           <FlatList
