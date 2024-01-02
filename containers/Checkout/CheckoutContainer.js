@@ -61,7 +61,7 @@ const CheckoutContainer = ({ navigation, route }) => {
         status: "Diajukan",
       };
 
-      dispatch(setEvent({ event: [...eventData, NewReservation] }));
+      dispatch(setEvent({ event: [...eventData, NewReservation] })); // POST TO DB EVENT
       dispatch(
         setReservation({
           itemsreservation: itemList.map((e) => ({ nama: e.nama, jumlah: 0 })),

@@ -3,7 +3,6 @@ import ButtonComponent from "../../components/Button/ButtonComponent";
 import TextInputComponent from "../../components/TextInput/TextInputComponent";
 import { colors } from "../../constants/colors";
 import User from "../../domain/models/User";
-import WarningText from "../../components/WarningText/WarningTextComponent";
 import { useDispatch, useSelector } from "react-redux";
 import { setRegister } from "../../redux/RegisterSlice";
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
@@ -18,7 +17,7 @@ const RegisterContainer = ({ navigation }) => {
   const [jawabanRahasia, setJawabanRahasia] = useState("");
   const [status, setStatus] = useState("");
   const dispatch = useDispatch();
-  const userData = useSelector((state) => state.register.datauser);
+  const userData = useSelector((state) => state.register.datauser); // GET USERDATA FROM DB USER
   const [isMahasiswa, setMahasiswa] = useState(false);
   const [isDosen, setDosen] = useState(false);
 
@@ -63,7 +62,7 @@ const RegisterContainer = ({ navigation }) => {
     );
 
     dispatch(
-      setRegister({ datauser: [...userData, NewUser.toSerializableObject()] })
+      setRegister({ datauser: [...userData, NewUser.toSerializableObject()] }) // POST USERDATA TO DB USER
     );
 
     navigation.navigate("Login");

@@ -15,8 +15,8 @@ const UserItemContainer = ({ navigation, route }) => {
   const [activeScreen, setActiveScreen] = useState("Peralatan");
   const { itemsreservation: itemsdata, roomsreservation: itemsroom } =
     useSelector((state) => state.reservation);
-  const allitem = useSelector((state) => state.itemNroom.itemsdata);
-  const allroom = useSelector((state) => state.itemNroom.roomsdata);
+  const allitem = useSelector((state) => state.itemNroom.itemsdata); // GET DATA FROM DB ITEM
+  const allroom = useSelector((state) => state.itemNroom.roomsdata); // GET DATA FROM DB ROOM
 
   const currentDate = new Date();
   const formattedDate = currentDate

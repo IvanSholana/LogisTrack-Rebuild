@@ -14,7 +14,7 @@ const LoginContainer = ({ navigation }) => {
   const [warning, setWarning] = useState(false);
   const dispatch = useDispatch();
 
-  const userData = useSelector((state) => state.register.datauser);
+  const userData = useSelector((state) => state.register.datauser); // GET DATA USER FROM DB JANGAN DIUBAH
 
   const loginHandling = () => {
     const userdata = userData.find(
