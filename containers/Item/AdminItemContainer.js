@@ -10,22 +10,19 @@ import { setItemRoom } from "../../redux/ItemRoomSlice";
 
 const AdminItemContainer = ({ navigation }) => {
   const [activeScreen, setActiveScreen] = useState("Peralatan");
-  const { itemsdata, roomsdata } = useSelector((state) => state.itemNroom);
+  const { itemsdata, roomsdata } = useSelector((state) => state.itemNroom); // GET FROM ITEM AND ROOM DB
 
   const dispatch = useDispatch();
 
   const deleteInventoryHandling = (item) => {
     if (activeScreen == "Peralatan") {
       const newdata = itemsdata.filter((e) => e.nama !== item);
-      dispatch(setItemRoom({ itemsdata: newdata, roomsdata: roomsdata }));
+      dispatch(setItemRoom({ itemsdata: newdata, roomsdata: roomsdata })); // POST TO ITEM DB
     } else {
       const newdata = roomsdata.filter((e) => e.nama !== item);
-      dispatch(setItemRoom({ itemsdata: itemsdata, roomsdata: newdata }));
+      dispatch(setItemRoom({ itemsdata: itemsdata, roomsdata: newdata })); // POST TO ROOM DB
     }
   };
-
-  console.log(itemsdata);
-  console.log(itemsdata[itemsdata.length - 1]);
 
   return (
     <>

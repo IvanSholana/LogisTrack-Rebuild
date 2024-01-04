@@ -17,10 +17,10 @@ const AdminEditContainer = ({ route, navigation }) => {
 
   const dispatch = useDispatch();
 
-  const { itemsdata, roomsdata } = useSelector((state) => state.itemNroom);
+  const { itemsdata, roomsdata } = useSelector((state) => state.itemNroom); // GET FROM ITEM AND ROOM DB
 
   const editInventoryHandling = (editedItem) => {
-    console.log(editedItem);
+    // console.log(editedItem);
     if (screen === "Peralatan") {
       if (
         !editedItem.nama ||
@@ -42,7 +42,7 @@ const AdminEditContainer = ({ route, navigation }) => {
           : item
       );
 
-      dispatch(setItemRoom({ itemsdata: updatedItemsData, roomsdata }));
+      dispatch(setItemRoom({ itemsdata: updatedItemsData, roomsdata })); // POST TO ITEM DB
     } else {
       if (
         !editedItem.nama ||
@@ -64,7 +64,7 @@ const AdminEditContainer = ({ route, navigation }) => {
           : room
       );
 
-      dispatch(setItemRoom({ itemsdata, roomsdata: updatedRoomsData }));
+      dispatch(setItemRoom({ itemsdata, roomsdata: updatedRoomsData })); // POST TO ROOM DB
     }
     navigation.goBack();
   };

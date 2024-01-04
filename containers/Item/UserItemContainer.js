@@ -49,7 +49,7 @@ const UserItemContainer = ({ navigation, route }) => {
     dispatch(
       setReservation({
         itemsreservation: updatedItemsData,
-        roomsreservation: itemsroom,
+        roomsreservation: itemsroom, // POST TO ITEM DB
       })
     );
   };
@@ -66,7 +66,7 @@ const UserItemContainer = ({ navigation, route }) => {
     dispatch(
       setReservation({
         itemsreservation: itemsdata,
-        roomsreservation: updatedRooms,
+        roomsreservation: updatedRooms, // POST TO ROOM DB
       })
     );
   };

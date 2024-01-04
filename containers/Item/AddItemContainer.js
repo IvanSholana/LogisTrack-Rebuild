@@ -29,7 +29,7 @@ const AddItemContainer = ({ route, navigation }) => {
     return isItemNameValid && isDescriptionValid && isQuantityCapacityValid;
   };
 
-  const { itemsdata, roomsdata } = useSelector((state) => state.itemNroom);
+  const { itemsdata, roomsdata } = useSelector((state) => state.itemNroom); // GET FROM ITEMS AND ROOM DATA
 
   const handleAddItem = () => {
     const isFormValid = validateForm();
@@ -68,7 +68,7 @@ const AddItemContainer = ({ route, navigation }) => {
           itemsdata: role == "Peralatan" ? updateItemData : itemsdata,
           roomsdata: role != "Peralatan" ? updateItemData : roomsdata,
         })
-      );
+      ); // POST TO ITEM OR ROOM DB
 
       dispatch(
         setReservation({

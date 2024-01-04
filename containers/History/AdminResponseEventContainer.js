@@ -13,7 +13,7 @@ import { ScrollView } from "react-native-gesture-handler";
 const AdminResponseContainer = ({ navigation, route }) => {
   const { data } = route.params;
 
-  const alldatareservation = useSelector((state) => state.event.event);
+  const alldatareservation = useSelector((state) => state.event.event); // GET FROM EVENT DB
   const datareservation = alldatareservation.find((e) => e.id == data.id);
 
   const [isVisible, setVisible] = useState(false);
@@ -36,7 +36,7 @@ const AdminResponseContainer = ({ navigation, route }) => {
             }
           : item
       );
-      dispatch(setEvent({ event: updateEvent }));
+      dispatch(setEvent({ event: updateEvent })); // POST TO EVENT DB
     } else {
       if (confirmation == false) {
         return;
@@ -51,7 +51,7 @@ const AdminResponseContainer = ({ navigation, route }) => {
               }
             : item
         );
-        dispatch(setEvent({ event: updateEvent }));
+        dispatch(setEvent({ event: updateEvent })); // POST TO EVENT DB
       }
     }
 

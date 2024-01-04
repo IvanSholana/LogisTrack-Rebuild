@@ -15,7 +15,6 @@ const RegisterContainer = ({ navigation }) => {
   const [emailInstitusi, setEmailInstitusi] = useState("");
   const [pertanyaanRahasia, setPertanyaanRahasia] = useState("");
   const [jawabanRahasia, setJawabanRahasia] = useState("");
-  const [status, setStatus] = useState("");
   const dispatch = useDispatch();
   const userData = useSelector((state) => state.register.datauser); // GET USERDATA FROM DB USER
   const [isMahasiswa, setMahasiswa] = useState(false);

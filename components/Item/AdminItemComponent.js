@@ -2,12 +2,8 @@ import React from "react";
 import { Pressable, View, StyleSheet, Text } from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome";
 import { colors } from "../../constants/colors";
-import { useDispatch, useSelector } from "react-redux";
 
 const ItemPage = ({ item, onPress, deletehandling }) => {
-  const dispatch = useDispatch();
-  const peralatan = useSelector((state) => state.peralatan);
-
   return (
     <View style={styles.container}>
       <Text style={styles.itemName}>{item.nama}</Text>

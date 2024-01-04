@@ -15,7 +15,7 @@ const CheckoutContainer = ({ navigation, route }) => {
     useSelector((state) => state.reservation);
   const { eventDate } = route.params;
 
-  const eventData = useSelector((state) => state.event.event);
+  const eventData = useSelector((state) => state.event.event); // GET FROM EVENT DB
   const username = useSelector((state) => state.login.name);
   const [namaEvent, setNameEvent] = useState("");
   const dispatch = useDispatch();

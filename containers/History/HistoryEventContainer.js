@@ -4,9 +4,9 @@ import { View, Text, FlatList } from "react-native";
 import EventCardComponent from "../../components/Card/EventCard";
 
 const HistoryEventContainer = ({ navigation }) => {
-  const eventData = useSelector((state) => state.event.event);
-  const userdata = useSelector((state) => state.login.name);
-  const status = useSelector((state) => state.login.status);
+  const eventData = useSelector((state) => state.event.event); // GET FROM DB
+  const userdata = useSelector((state) => state.login.name); 
+  const status = useSelector((state) => state.login.status); 
 
   const isAdmin = status === "Admin";
   const isNoPendingRequests = eventData.length === 0;

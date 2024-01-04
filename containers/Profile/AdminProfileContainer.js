@@ -7,8 +7,7 @@ import EventCardComponent from "../../components/Card/EventCard";
 
 const AdminProfileContainer = ({ navigation }) => {
   const userdata = useSelector((state) => state.login);
-  const eventdata = useSelector((state) => state.event.event);
-  let showdata = [];
+  const eventdata = useSelector((state) => state.event.event); // GET FROM EVENT DB
 
   const statusLabels = {
     Dosen: "NIDN",
